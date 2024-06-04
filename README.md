@@ -2,6 +2,15 @@
 
 <p>Este repositório contém um script Python para verificar a qualidade da água em várias praias, baseado em quatro parâmetros principais: pH, temperatura, oxigênio dissolvido (OD) e turbidez. O script solicita ao usuário a entrada de valores para esses parâmetros, calcula a média dos valores inseridos, e determina se a qualidade da água está dentro dos padrões recomendáveis.</p>
 
+<h2>Integrantes do grupo</h2>
+
+<ul>
+        <li>GUSTAVO JUN IRIZAWA IKEDA (RM554718)</li>
+        <li>JÚLIO CÉSAR RUIZ ZEQUIN (RM554676)</li>
+        <li>VINICIUS DOS SANTOS WINCE (RM557033)</li>
+    <br>
+</ul>
+
 <h2>Estrutura do Código</h2>
 
 <p>O código está organizado em funções que lidam com cada parâmetro de qualidade da água e uma função principal que coordena a verificação para múltiplas praias.</p>
@@ -99,13 +108,7 @@
 
 <p>Esperamos que este script seja útil para a verificação da qualidade da água em praias e contribua para a conscientização sobre a importância da preservação da qualidade da água.</p>
 
-<h2>Integrantes do grupo.</h2>
 
-<ul>
-        <li>GUSTAVO JUN IRIZAWA IKEDA (RM554718)</li>
-        <li>JÚLIO CÉSAR RUIZ ZEQUIN (RM554676)</li>
-        <li>VINICIUS DOS SANTOS WINCE (RM557033)</li>
-</ul>
 
 </body>
 </html>
