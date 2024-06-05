@@ -183,20 +183,15 @@ verificação_da_qualidade_da_agua()
     </li>
 </ul>
 
-<h2>Requisitos</h2>
-
-<p>Para rodar o código, você precisa ter o Python instalado em sua máquina. Você pode baixar o Python <a href="https://www.python.org/downloads/">aqui</a>.</p>
-
-<h3>Passos para executar o código:</h3>
-
-<ol>
-    <li>Certifique-se de ter o Python instalado. A versão recomendada é o Python 3.6 ou superior.</li>
-    <li>Baixe o script Python do repositório.</li>
-    <li>Abra um terminal (ou prompt de comando) e navegue até o diretório onde o script foi salvo.</li>
-    <li>Execute o script com o comando:
-        <pre><code>python nome_do_script.py</code></pre>
-    </li>
-</ol>
+<h2>Requisitos do Sistema</h2>
+<p>Para rodar a aplicação, são necessários os seguintes requisitos do sistema:</p>
+<ul>
+    <li><strong>Sistema Operacional:</strong> Windows 7 ou superior, macOS 10.13 ou superior, ou distribuições Linux modernas.</li>
+    <li><strong>Python:</strong> Python 3.6 ou superior.</li>
+    <li><strong>Espaço em Disco:</strong> Pelo menos 100 MB de espaço livre.</li>
+    <li><strong>Memória RAM:</strong> Pelo menos 1 GB de RAM.</li>
+    <li><strong>Outros Requisitos:</strong> Acesso à internet para baixar o Python e outras dependências, se necessário.</li>
+</ul>
 
 <h2>Requisitos</h2>
 
