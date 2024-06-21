@@ -1,132 +1,229 @@
-<h1>Verificação do Tempo de Volta</h1>
+<h1>Verificação da Qualidade da Água</h1>
 
-<p>Este repositório contém um script Python para verificar os tempos de volta em uma corrida, baseado na média dos tempos das voltas inseridas pelo usuário. O script solicita ao usuário a entrada de valores para os tempos das voltas, calcula a média desses tempos, e determina se a média está dentro do padrão recomendável de 1.16 segundos.</p>
+<p>Este repositório contém um script Python para verificar a qualidade da água em várias praias, baseado em quatro parâmetros principais: pH, temperatura, oxigênio dissolvido (OD) e turbidez. O script solicita ao usuário a entrada de valores para esses parâmetros, calcula a média dos valores inseridos, e determina se a qualidade da água está dentro dos padrões recomendáveis.</p>
 
-<h2>Integrantes do Grupo</h2>
+<h2>Integrantes do grupo</h2>
+
 <ul>
-    <li>RICKELMYN DE SOUZA RUESCAS(RM556055)</li>
-    <li>GUILHERME CEZARINO SIMÕES(RM557724)</li>
-    <li>FABRINI CONTE ARAÚJO(RM557813)</li>    
-    <li>VINICIUS DOS SANTOS WINCE(RM557033)</li>
+    <li>GUSTAVO JUN IRIZAWA IKEDA (RM554718)</li>
+        <li>JÚLIO CÉSAR RUIZ ZEQUIN (RM554676)</li>
+        <li>VINICIUS DOS SANTOS WINCE (RM557033)</li>
+    <br>
 </ul>
 
-<h2>Código do Projeto</h2>
-<pre><code>
-def obter_tempos(num_voltas):
-    # Essa função pega 5 resultados de tempo e os armazena em uma lista (temp_lista) e retorna a lista
-    temp_lista = []
 
-    print("Vamos tirar a média de tempo de todas as voltas até agora.\n")
+<h2>Código do projeto</h2>
+<pre>
+<code>
+        # Lista para armazenar médias dos parâmetros de qualidade da água
+lista_media = []
 
-    print("Agora insira o tempo das voltas.\n")
-    for i in range(num_voltas):
-        temp_voltas = float(input(f"Insira o tempo da volta {i+1}: "))
-        print(f"Tempo da volta {i+1}: {temp_voltas}\n")
-        temp_lista.append(temp_voltas)
+def valor_ph():
+    '''Essa função pede 5 valores do pH, tira a média dos mesmos e armazena o resultado em uma lista.
+    Caso a média esteja dentro dos valores recomendáveis para o pH, a função retornará True, caso contrário False.'''
 
-    return temp_lista
+    ph_lista = []
+    for i in range(5):
+        ph = float(input(f"Insira o valor de pH {i+1}° valor: "))
+        ph_lista.append(ph)
 
-def calcular_media(temp_lista):
-    # Essa função soma os valores dentro da lista de média e divide pelo tamanho da lista (nesse caso 5).
-    media = sum(temp_lista) / len(temp_lista)
-    return media
+    media_ph = sum(ph_lista) / 5
+    lista_media.append(media_ph)
 
-def verificar_media(media, referencia=1.16):
-    # Essa função verifica se a média está acima ou abaixo de 1.16 segundos, se estiver abaixo ele retorna que a média está boa
-    # caso contrário ele fala que está ruim. Em ambos os casos ele dá a diferença entre a média calculada e a de referência.
-    if media < referencia:
-        print(f"A média de tempo das voltas é: {media:.2f} segundos.")
-        print("A média está boa!")
-        diferenca = referencia - media
-        print(f"A média está {diferenca:.2f} segundos abaixo da média de referência (1.16 segundos).")
+    if 7 <= media_ph <= 8:
+        return True
     else:
-        print(f"A média de tempo das voltas é: {media:.2f} segundos.")
-        print("A média precisa melhorar.")
-        diferenca = media - referencia
-        print(f"A média está {diferenca:.2f} segundos acima da média de referência (1.16 segundos).")
+        return False
 
-# Usando as funções
-num_voltas = 5  # Número de voltas que você deseja
-tempos = obter_tempos(num_voltas)
-media = calcular_media(tempos)
-verificar_media(media)
-</code></pre>
+def valor_temp():
+    '''Essa função pede 5 valores da temperatura, tira a média dos mesmos e armazena o resultado em uma lista.
+    Caso a média esteja dentro dos valores recomendáveis para a temperatura, a função retornará True, caso contrário False.'''
+    temp_lista = []
+    for i in range(5):
+        temp = float(input(f"Insira o valor de temperatura {i+1}° valor: "))
+        temp_lista.append(temp)
 
+    media_temp = sum(temp_lista) / 5
+    lista_media.append(media_temp)
+
+    if media_temp == 25:
+        return True
+    else:
+        return False
+
+def valor_od():
+    '''Essa função pede 5 valores do oxigênio dissolvido (OD) em mg/L, tira a média dos mesmos e armazena o resultado em uma lista.
+    Caso a média esteja dentro dos valores recomendáveis para o OD, a função retornará True, caso contrário False.'''
+
+    od_lista = []
+    for i in range(5):
+        od = float(input(f"Insira o valor de oxigênio dissolvido (OD) {i+1}° valor: "))
+        od_lista.append(od)
+
+    media_od = sum(od_lista) / 5
+    lista_media.append(media_od)
+
+    if media_od >= 5:
+        return True
+    else:
+        return False
+
+def valor_turbidez():
+    '''Essa função pede 5 valores de turbidez (clareza da água), tira a média dos mesmos e armazena o resultado em uma lista.
+    Caso a média esteja dentro dos valores recomendáveis para a turbidez, a função retornará True, caso contrário False.'''
+
+    turbidez_lista = []
+    for i in range(5):
+        turbidez = float(input(f"Insira o valor de turbidez {i+1}° valor: "))
+        turbidez_lista.append(turbidez)
+
+    media_turbidez = sum(turbidez_lista) / 5
+    lista_media.append(media_turbidez)
+
+    if media_turbidez > 3:
+        return True
+    else:
+        return False
+
+''' Lista para armazenar os nomes das praias'''
+lista_praias = []
+
+def praias():
+    '''Essa função pede o nome de duas praias e armazena os nomes em uma lista.'''
+    for k in range(10):
+        praia = input(f"Insira o nome da {k+1}° praia: ")
+        lista_praias.append(praia)
+
+def verificação_da_qualidade_da_agua():
+    '''Essa função define se a água está em boas condições e mostra a média dos valores medidos.'''
+
+    print("Insira o nome das praias que deseja ver a qualidade da água.")
+    praias()
+
+    for i in range(10):
+        print(f"\nInsira os valores para a praia {lista_praias[i]}:")
+
+        '''Limpa a lista de médias para armazenar novos valores'''
+        lista_media.clear()
+
+        ''' Coleta e verifica os valores de cada parâmetro'''
+        lista_booleana = [valor_ph(), valor_temp(), valor_od(), valor_turbidez()]
+
+        ''' Unidades de medida para cada parâmetro'''
+        medida_od = "mg/L"
+        medida_turbidez = "NTU"
+        medida_temp = "°C"
+
+        ''' Verificação das condições da água'''
+        if False in lista_booleana:
+            print(f"\nA água da praia {lista_praias[i]} não está em boas condições.")
+        else:
+            print(f"\nA água da praia {lista_praias[i]} está em boas condições.")
+
+        ''' Exibe os valores médios medidos'''
+        print(f"Os valores lidos são - pH: {lista_media[0]}; Temperatura: {lista_media[1]} {medida_temp}; "
+            f"Oxigênio dissolvido: {lista_media[2]} {medida_od}; Turbidez: {lista_media[3]} {medida_turbidez}.")
+
+''' Executa a função principal'''
+verificação_da_qualidade_da_agua()
+</code>
+</pre> 
 <h2>Estrutura do Código</h2>
-<p>O código está organizado em três funções principais que lidam com a coleta dos tempos das voltas, cálculo da média dos tempos e verificação da média em relação a um valor de referência.</p>
 
-<h2>Lista de Funções</h2>
+<p>O código está organizado em funções que lidam com cada parâmetro de qualidade da água e uma função principal que coordena a verificação para múltiplas praias.</p>
+
+<h3>Lista de Funções</h3>
+<li><strong>valor_ph()</strong>
+        <ul>
+            <li>Pede 5 valores de pH ao usuário.</li>
+            <li>Calcula a média dos valores.</li>
+            <li>Armazena a média na lista <code>lista_media</code>.</li>
+            <li>Retorna <code>True</code> se a média estiver entre 7 e 8, caso contrário, retorna <code>False</code>.</li>
+        </ul>
+    </li>
+    <li><strong>valor_temp()</strong>
+        <ul>
+            <li>Pede 5 valores de temperatura ao usuário.</li>
+            <li>Calcula a média dos valores.</li>
+            <li>Armazena a média na lista <code>lista_media</code>.</li>
+            <li>Retorna <code>True</code> se a média for igual a 25°C, caso contrário, retorna <code>False</code>.</li>
+        </ul>
+    </li>
+    <li><strong>valor_od()</strong>
+<li>Pede 5 valores de oxigênio dissolvido (OD) ao usuário.</li>
+            <li>Calcula a média dos valores.</li>
+            <li>Armazena a média na lista <code>lista_media</code>.</li>
+            <li>Retorna <code>True</code> se a média for maior ou igual a 5 mg/L, caso contrário, retorna <code>False</code>.</li>
+<li><strong>valor_turbidez()</strong>
+<li>Pede 5 valores de turbidez ao usuário.</li>
+            <li>Calcula a média dos valores.</li>
+            <li>Armazena a média na lista <code>lista_media</code>.</li>
+            <li>Retorna <code>True</code> se a média for maior que 3 NTU, caso contrário, retorna <code>False</code>.</li>
+<li><strong>praias()</strong>
 <ul>
-    <li>
-        <strong>obter_tempos(num_voltas)</strong>: Pede ao usuário os tempos de volta.
-        <ul>
-            <li>Coleta 5 valores de tempo de volta.</li>
-            <li>Armazena os valores em uma lista <code>temp_lista</code>.</li>
-            <li>Retorna a lista de tempos.</li>
+            <li>Pede o nome de 10 praias ao usuário.</li>
+            <li>Armazena os nomes na lista <code>lista_praias</code>.</li>
         </ul>
     </li>
-    <li>
-        <strong>calcular_media(temp_lista)</strong>: Calcula a média dos tempos fornecidos.
+    <li><strong>verificação_da_qualidade_da_agua()</strong>
         <ul>
-            <li>Recebe uma lista de tempos como parâmetro.</li>
-            <li>Calcula a média dos valores na lista.</li>
-            <li>Retorna a média calculada.</li>
-        </ul>
-    </li>
-    <li>
-        <strong>verificar_media(media, referencia=1.16)</strong>: Verifica se a média está dentro do padrão recomendável.
-        <ul>
+            <li>Pede ao usuário os nomes das praias.</li>
+            <li>Para cada praia, solicita os valores de pH, temperatura, OD e turbidez.</li>
+            <li>Calcula as médias e verifica se os valores estão dentro dos limites recomendados.</li>
+            <li>Imprime o status da qualidade da água e as médias dos parâmetros para cada praia.</li>
             <li>Recebe a média calculada e um valor de referência (1.16 segundos).</li>
             <li>Imprime se a média está boa (abaixo de 1.16 segundos) ou se precisa melhorar (acima de 1.16 segundos).</li>
             <li>Calcula e imprime a diferença entre a média calculada e a referência.</li>
         </ul>
     </li>
-</ul>
-
+</ul> 
 <h2>Requisitos do Sistema</h2>
 <p>Para rodar a aplicação, são necessários os seguintes requisitos do sistema:</p>
 <ul>
-    <li><strong>Sistema Operacional</strong>: Windows 7 ou superior, macOS 10.13 ou superior, ou distribuições Linux modernas.</li>
-    <li><strong>Python</strong>: Python 3.6 ou superior.</li>
-    <li><strong>Espaço em Disco</strong>: Pelo menos 100 MB de espaço livre.</li>
-    <li><strong>Memória RAM</strong>: Pelo menos 1 GB de RAM.</li>
-    <li><strong>Outros Requisitos</strong>: Acesso à internet para baixar o Python e outras dependências, se necessário.</li>
+    <li><strong>Sistema Operacional:</strong> Windows 7 ou superior, macOS 10.13 ou superior, ou distribuições Linux modernas.</li>
+    <li><strong>Python:</strong> Python 3.6 ou superior.</li>
+    <li><strong>Espaço em Disco:</strong> Pelo menos 100 MB de espaço livre.</li>
+    <li><strong>Memória RAM:</strong> Pelo menos 1 GB de RAM.</li>
+    <li><strong>Outros Requisitos:</strong> Acesso à internet para baixar o Python e outras dependências, se necessário.</li>
 </ul>
-
 <h2>Requisitos</h2>
+
 <p>Para rodar o código, você precisa ter o Python e o Visual Studio Code (VSCode) instalados em sua máquina.</p>
 
 <h3>Instalação do Python</h3>
-<p>Você pode baixar o Python <a href="https://www.python.org/downloads/">aqui</a>. A versão recomendada é o Python 3.6 ou superior.</p>
 
-<h3>Instalação do Visual Studio Code</h3>
 <p>Você pode baixar o Visual Studio Code <a href="https://code.visualstudio.com/">aqui</a>.</p>
 
 <h2>Execução</h2>
+
 <p>Para executar o script utilizando o Visual Studio Code (VSCode), siga os passos abaixo:</p>
+
 <ol>
     <li>Abra o Visual Studio Code.</li>
     <li>Certifique-se de que a extensão do Python está instalada no VSCode. Caso não esteja, você pode instalá-la a partir da aba de extensões.</li>
     <li>Baixe o script Python do repositório e salve-o em um diretório de sua escolha.</li>
-    <li>No VSCode, clique em <strong>File &gt; Open Folder</strong> e navegue até o diretório onde o script foi salvo. Abra esse diretório.</li>
-    <li>Clique duas vezes no arquivo do script para abri-lo no editor.</li>
-    <li>Com o arquivo aberto, clique no botão "Run" no canto superior direito (Símbolo de "Play") ou pressione <strong>F5</strong> para executar o script.</li>
+    <li>No VSCode, clique em <strong>File</strong> > <strong>Open Folder</strong> e navegue até o diretório onde o script foi salvo. Abra esse diretório.</li> 
+<li>Clique duas vezes no arquivo do script para abri-lo no editor.</li>
+    <li>Com o arquivo aberto, clique no botão "Run" no canto superior direito (Símbolo de "Play") ou pressione <code>F5</code> para executar o script.</li>
 </ol>
 
-<h2>Exemplo de Uso</h2>
-<ul>
-    <li>O usuário será solicitado a inserir os tempos de volta.</li>
-    <li>Para cada volta, o usuário deve fornecer 5 valores de tempo.</li>
-    <li>O script calculará a média dos tempos fornecidos.</li>
-    <li>Será verificado se a média está dentro do limite recomendável de 1.16 segundos.</li>
-    <li>O script exibirá se a média dos tempos está boa ou precisa melhorar, juntamente com a diferença em relação ao valor de referência.</li>
-</ul>
+<h3>Exemplo de Uso</h3>
 
-<h2>Limitações</h2>
+<ol>
+    <li>O usuário será solicitado a inserir o nome de 10 praias.</li>
+    <li>Para cada praia, o usuário deve fornecer 5 valores para pH, temperatura, oxigênio dissolvido e turbidez.</li>
+    <li>O script calculará a média dos valores fornecidos para cada parâmetro.</li>
+    <li>Será verificado se a média de cada parâmetro está dentro dos limites recomendados.</li>
+    <li>O script exibirá se a água da praia está em boas condições ou não, junto com os valores médios dos parâmetros medidos.</li>
+</ol>
+<h3>Limitações</h3>
 <ul>
     <li>O script não possui validações de entrada robustas e assume que o usuário fornecerá entradas numéricas válidas.</li>
-    <li>O limite recomendável de 1.16 segundos é fixo no código e pode precisar de ajustes conforme as normas ou necessidades específicas.</li>
+    <li>Os limites recomendáveis para cada parâmetro são fixos no código e podem precisar de ajustes conforme as normas locais de qualidade da água.</li>
 </ul>
-
 <h2>Contribuições</h2>
+
 <p>Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests para melhorias no código, validações de entrada, ou ajustes nos limites dos parâmetros.</p>
+
+</body>
+</html>
